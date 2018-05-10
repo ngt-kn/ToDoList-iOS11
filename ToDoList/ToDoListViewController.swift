@@ -18,7 +18,7 @@ class ToDoListViewController: UITableViewController {
         
     }
 
-    //MARK - Tableview Data Source Methods
+    //MARK: - Tableview Data Source Methods
     
     // Declare the amount of rows in tableView
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -34,5 +34,25 @@ class ToDoListViewController: UITableViewController {
         
         return cell
     }
-}
+    
+    //Mark: - tableViewDelegate methods
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        print(indexPath.row)
+//        print(itemArray[indexPath.row])
+        
+        // Place or remove a checkmark when selected
+        if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
+            tableView.cellForRow(at: indexPath)?.accessoryType = .none
+        } else {
+            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+        }
+        
+        
+        // After selection reset row color to default
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 
+
+
+}
