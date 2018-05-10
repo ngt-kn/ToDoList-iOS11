@@ -10,16 +10,16 @@ import UIKit
 
 class ToDoListViewController: UITableViewController {
 
-    var itemArray = ["Find Keys", "Go shopping", "Make dinner"]
+    var itemArray = [Items]()
     
     let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let items = defaults.array(forKey: "TodoListArray") as? [String] {
-            itemArray = items
-        }
+        let newItems = Items()
+        newItems.title = "First Item"
+        itemArray.append(newItems)
         
     }
 
@@ -35,8 +35,13 @@ class ToDoListViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath)
         
-        cell.textLabel?.text = itemArray[indexPath.row]
+        let item = itemArray[indexPath.row]
         
+        cell.textLabel?.text = item.title
+        
+        // Ternary place (true) or remove (false) a checkmark in cell
+        cell.accessoryType = item.done ? .checkmark : .none
+
         return cell
     }
     
@@ -44,12 +49,11 @@ class ToDoListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        // Place or remove a checkmark when selected
-        if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
-            tableView.cellForRow(at: indexPath)?.accessoryType = .none
-        } else {
-            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-        }
+        // toggles between true/false for .done property
+        itemArray[indexPath.row].done = !itemArray[indexPath.row].done
+        
+        // Reload the table
+        tableView.reloadData()
     
         // After selection reset row color to default
         tableView.deselectRow(at: indexPath, animated: true)
@@ -68,9 +72,12 @@ class ToDoListViewController: UITableViewController {
         let action = UIAlertAction(title: "Add Item", style: .default) { (action) in
             
             // what will happen once user clicks add item
-            self.itemArray.append(newItemTextField.text!)
+            let newItem = Items()
+            newItem.title = newItemTextField.text!
             
-           self.defaults.set(self.itemArray, forKey: "TodoListArray")
+            self.itemArray.append(newItem)
+            
+            self.defaults.set(self.itemArray, forKey: "TodoListArray")
             
             // reload textFields with new item
             self.tableView.reloadData()
