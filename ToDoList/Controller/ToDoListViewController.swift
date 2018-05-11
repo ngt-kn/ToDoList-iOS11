@@ -7,20 +7,17 @@
 //
 
 import UIKit
+import CoreData
 
 class ToDoListViewController: UITableViewController {
 
-    var itemArray = [Items]()
-    
+    var itemArray = [Item]()
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
     let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Items.plist")
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        let newItems = Items()
-//        newItems.title = "First Item"
-//        itemArray.append(newItems)
-        
         
         loadItems()
     }
@@ -56,9 +53,6 @@ class ToDoListViewController: UITableViewController {
         
         saveItems()
         
-        // Reload the table
-//        tableView.reloadData()
-    
         // After selection reset row color to default
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -69,15 +63,17 @@ class ToDoListViewController: UITableViewController {
         
         var newItemTextField = UITextField()
         
+
         // create new alert view
         let alert = UIAlertController(title: "Add new item", message: "", preferredStyle: .alert)
         
         // specify action for alert
         let action = UIAlertAction(title: "Add Item", style: .default) { (action) in
-            
+    
             // what will happen once user clicks add item
-            let newItem = Items()
+            let newItem = Item(context: self.context)
             newItem.title = newItemTextField.text!
+            newItem.done = false
             
             self.itemArray.append(newItem)
             
@@ -98,13 +94,11 @@ class ToDoListViewController: UITableViewController {
     
     // encode items saved to plist
     func saveItems() {
-        let encoder = PropertyListEncoder()
-        
+
         do {
-            let data = try encoder.encode(itemArray)
-            try data.write(to: dataFilePath!)
+            try context.save()
         } catch {
-            print("Error encoding item array, \(error)")
+            print("Error saving to context \(error)")
         }
         // reload textFields with new item
         tableView.reloadData()
@@ -112,37 +106,17 @@ class ToDoListViewController: UITableViewController {
     }
     
     func loadItems() {
-        if let data = try? Data(contentsOf: dataFilePath!){
-            let decoder = PropertyListDecoder()
-            do {
-                try itemArray = decoder.decode([Items].self, from: data)
-            } catch {
-                print("Decoder error: \(error)")
-            }
+        let request : NSFetchRequest<Item> = Item.fetchRequest()
+        do {
+            itemArray = try context.fetch(request)
+            
+        } catch {
+            print("Error fetching data from context \(error)")
         }
+                
     }
+        
+
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
 }
