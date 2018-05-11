@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		93644F0634AAEB362A5192DE /* Pods_ToDoList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B75AFD895F7B5A31B8409D00 /* Pods_ToDoList.framework */; };
-		A68E0EF020A506C700EDCA16 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A68E0EEE20A506C700EDCA16 /* DataModel.xcdatamodeld */; };
+		A672DAF720A57C97002543BC /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = A672DAF620A57C97002543BC /* Item.swift */; };
+		A672DAF920A57CAC002543BC /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = A672DAF820A57CAC002543BC /* Category.swift */; };
 		A6A0A0C720A3F5C000E732DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A0A0C620A3F5C000E732DF /* AppDelegate.swift */; };
 		A6A0A0C920A3F5C000E732DF /* ToDoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A0A0C820A3F5C000E732DF /* ToDoListViewController.swift */; };
 		A6A0A0CC20A3F5C000E732DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6A0A0CA20A3F5C000E732DF /* Main.storyboard */; };
@@ -19,7 +20,8 @@
 
 /* Begin PBXFileReference section */
 		1C16A993CAC93771FBBDA64F /* Pods-ToDoList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoList.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ToDoList/Pods-ToDoList.debug.xcconfig"; sourceTree = "<group>"; };
-		A68E0EEF20A506C700EDCA16 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		A672DAF620A57C97002543BC /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		A672DAF820A57CAC002543BC /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		A6A0A0C320A3F5C000E732DF /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6A0A0C620A3F5C000E732DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6A0A0C820A3F5C000E732DF /* ToDoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListViewController.swift; sourceTree = "<group>"; };
@@ -64,7 +66,8 @@
 		A634079820A435A2000C037B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A68E0EEE20A506C700EDCA16 /* DataModel.xcdatamodeld */,
+				A672DAF620A57C97002543BC /* Item.swift */,
+				A672DAF820A57CAC002543BC /* Category.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -240,10 +243,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A672DAF720A57C97002543BC /* Item.swift in Sources */,
 				A6F73E0020A54EDE002BAE32 /* CategoryViewController.swift in Sources */,
 				A6A0A0C920A3F5C000E732DF /* ToDoListViewController.swift in Sources */,
-				A68E0EF020A506C700EDCA16 /* DataModel.xcdatamodeld in Sources */,
 				A6A0A0C720A3F5C000E732DF /* AppDelegate.swift in Sources */,
+				A672DAF920A57CAC002543BC /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,7 +395,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 64W895HG9C;
 				INFOPLIST_FILE = ToDoList/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nagatak.ToDoList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -407,7 +414,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 64W895HG9C;
 				INFOPLIST_FILE = ToDoList/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nagatak.ToDoList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -437,19 +447,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		A68E0EEE20A506C700EDCA16 /* DataModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				A68E0EEF20A506C700EDCA16 /* DataModel.xcdatamodel */,
-			);
-			currentVersion = A68E0EEF20A506C700EDCA16 /* DataModel.xcdatamodel */;
-			path = DataModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = A6A0A0BB20A3F5BF00E732DF /* Project object */;
 }
