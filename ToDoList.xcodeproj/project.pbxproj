@@ -13,6 +13,7 @@
 		A6A0A0CC20A3F5C000E732DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6A0A0CA20A3F5C000E732DF /* Main.storyboard */; };
 		A6A0A0CE20A3F5C500E732DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6A0A0CD20A3F5C500E732DF /* Assets.xcassets */; };
 		A6A0A0D120A3F5C500E732DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6A0A0CF20A3F5C500E732DF /* LaunchScreen.storyboard */; };
+		A6F73E0020A54EDE002BAE32 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F73DFF20A54EDE002BAE32 /* CategoryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		A6A0A0CD20A3F5C500E732DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A6A0A0D020A3F5C500E732DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A6A0A0D220A3F5C500E732DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "/Users/nagatak/Documents/xcode projects/Udemy_IOS_Projects/ToDoList/ToDoList/ToDoList/Info.plist"; sourceTree = "<absolute>"; };
+		A6F73DFF20A54EDE002BAE32 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +50,7 @@
 		A634079A20A435DA000C037B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				A6F73DFF20A54EDE002BAE32 /* CategoryViewController.swift */,
 				A6A0A0C820A3F5C000E732DF /* ToDoListViewController.swift */,
 			);
 			path = Controller;
@@ -170,6 +173,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6F73E0020A54EDE002BAE32 /* CategoryViewController.swift in Sources */,
 				A6A0A0C920A3F5C000E732DF /* ToDoListViewController.swift in Sources */,
 				A68E0EF020A506C700EDCA16 /* DataModel.xcdatamodeld in Sources */,
 				A6A0A0C720A3F5C000E732DF /* AppDelegate.swift in Sources */,
@@ -326,7 +330,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.nagatak.ToDoList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -344,7 +348,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.nagatak.ToDoList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
